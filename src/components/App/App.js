@@ -23,6 +23,13 @@ class App extends Component {
     })
   };//this function uses axios to talk to our server and get our database or information and store it in state upon return
 
+  handleLike = (id) => {
+    Axios.put(`/gallery/like/${id}`).then(response => {
+      console.log(response);
+      this.getGallery();
+    })
+  } 
+
   render() {
     return (
       <div className="App">
@@ -31,7 +38,7 @@ class App extends Component {
         </header>
         <br/>
         <p>Gallery goes here</p>
-        <GalleryList gallery={this.state.gallery}/>
+        <GalleryList handleLike={this.handleLike} gallery={this.state.gallery}/>
       </div>
     );
   }
