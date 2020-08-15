@@ -4,7 +4,13 @@ import GalleryItem from '../GalleryItem/GalleryItem.js'
 class GalleryList extends Component {
     render() {
         return(
-            <p>Hello from GalleryList</p>
+            <>
+                <div>
+                    {this.props.gallery.map(image => (
+                        <GalleryItem key={image.id} image={image} />
+                    ))}
+                </div>
+            </>
         );
     };
 };

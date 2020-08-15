@@ -7,21 +7,21 @@ import Axios from 'axios';
 class App extends Component {
 
   state = {
-    galleryList: []
-  }
+    gallery: []
+  }//declares state, our friendly, local variable storage!
 
   componentDidMount() {
     this.getGallery();
-  }
+  };//similar to doc ready, this will get our data from the server/db once the "app component" has finished mounting
+
   getGallery = () => {
     Axios.get('/gallery').then(response => {
       this.setState({
-        galleryList: response.data
+        gallery: response.data
       });
-      console.log(this.state.galleryList);
-      
+      console.log(this.state.gallery);
     })
-  }
+  };//this function uses axios to talk to our server and get our database or information and store it in state upon return
 
   render() {
     return (
@@ -31,7 +31,7 @@ class App extends Component {
         </header>
         <br/>
         <p>Gallery goes here</p>
-        <GalleryList galleryList={this.state.galleryList}/>
+        <GalleryList gallery={this.state.gallery}/>
       </div>
     );
   }
