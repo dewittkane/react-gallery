@@ -3,6 +3,7 @@ import './App.css';
 import GalleryList from '../GalleryList/GalleryList.js'
 import GalleryForm from '../GalleryForm/GalleryForm.js'
 import Axios from 'axios';
+import DeleteModeButton from '../DeleteModeButton/DeleteModeButton';
 
 
 class App extends Component {
@@ -15,12 +16,6 @@ class App extends Component {
     },
     gallery: []
   }//declares state, our friendly, local variable storage!
-
-  toggleDeleteMode = () => {
-    this.setState({
-      deleteMode: !this.state.deleteMode
-    })
-  }
 
   componentDidMount() {
     this.getGallery();
@@ -53,9 +48,7 @@ class App extends Component {
         [propertyName]: event.target.value
       }
     });
-  }
-
-  
+  };//stores input data
 
   getGallery = () => {
     Axios.get('/gallery').then(response => {
@@ -65,8 +58,9 @@ class App extends Component {
       console.log(this.state.gallery);
     }).catch((error) => {
       console.log(error);
-  });//this function uses axios to talk to our server and get our database or information and store it in state upon return
-  }
+  })};//this function uses axios to talk to our server and get our database or information and store it in state upon return
+
+
   handleLike = (id) => {
     Axios.put(`/gallery/like/${id}`).then(response => {
       console.log(response);
@@ -74,7 +68,22 @@ class App extends Component {
     }).catch((error) => {
       console.log(error);
     })
-  } 
+  }; //sends put request to the server with the id to be liked
+
+  toggleDeleteMode = () => {
+    this.setState({
+      deleteMode: !this.state.deleteMode
+    })
+  };  // toggles the delete mode state
+
+  deleteImage = (id) => {
+    Axios.delete(`/gallery/${id}`).then(response => {
+      console.log(response);
+      this.getGallery();
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
 
   render() {
     return (
@@ -82,9 +91,19 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Gallery of my life</h1>
         </header>
-        <GalleryForm newImage={this.state.newImage} handleChangeFor={this.handleChangeFor} submitImage={this.submitImage}/>
+        <GalleryForm 
+          newImage={this.state.newImage} 
+          handleChangeFor={this.handleChangeFor} 
+          submitImage={this.submitImage}
+        />
         <br/>
-        <GalleryList handleLike={this.handleLike} gallery={this.state.gallery}/>
+        <GalleryList 
+          deleteImage={this.deleteImage} 
+          deleteMode= {this.state.deleteMode} 
+          handleLike={this.handleLike} 
+          gallery={this.state.gallery}
+        />
+        <DeleteModeButton toggleDeleteMode={this.toggleDeleteMode} />
       </div>
     );
   }

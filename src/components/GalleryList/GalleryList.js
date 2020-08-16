@@ -7,7 +7,13 @@ class GalleryList extends Component {
             <>
                 <div>
                     {this.props.gallery.map(image => (
-                        <GalleryItem key={image.id} handleLike={this.props.handleLike} image={image} />
+                        <GalleryItem 
+                            key={image.id} 
+                            handleLike={this.props.handleLike} 
+                            image={image} 
+                            deleteMode={this.props.deleteMode}
+                            deleteImage={this.props.deleteImage}
+                        />
                     ))}
                 </div>
             </>
