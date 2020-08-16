@@ -17,6 +17,18 @@ router.put('/like/:id', (req, res) => {
         })
 }); // END PUT Route
 
+router.put('/', (req, res) => {
+    const newImage = req.body;
+    const sqlQuery = `INSERT INTO gallery (path, description) VALUES ($1, $2)`
+    pool.query(sqlQuery, [newImage.url, newImage.description])
+        .then(result => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log(`Error making database query ${sqlQuery}`, error);
+            res.sendStatus(500);
+        })
+}); // END PUT Route
+
 // GET Route
 router.get('/', (req, res) => {
 
