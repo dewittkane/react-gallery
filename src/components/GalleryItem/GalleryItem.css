@@ -1,0 +1,27 @@
+.item {
+    display: block;
+    flex-basis: 33%;
+}
+
+img {
+    width: 100%;
+    max-width: 250px
+}
+.seethrough {
+    opacity: .2;
+}
+
+.ontop{
+    margin: 0px;
+    color: teal;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.seethroughparent {
+    position: relative;
+    text-align: center;
+    color: white;
+}

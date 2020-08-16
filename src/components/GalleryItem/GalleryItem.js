@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
+import './GalleryItem.css'
+import { makeStyles } from "@material-ui/core/styles";
+import { Grid, Paper } from "@material-ui/core";
+
+
 class GalleryItem extends Component {
 
     state = {
@@ -13,14 +19,23 @@ class GalleryItem extends Component {
 
     render() {
         return(
-            <>
-                <div onClick={this.toggleState}>
-                {this.state.showImage ? <img height="150" width="150" src={this.props.image.path} alt={this.props.image.description}/> : <div height="150" width="150">{this.props.image.description}</div>}
-                </div>
-                <p>{this.props.image.likes ? `This photo has ${this.props.image.likes} likes.` : "This photo doesn't have any likes :["}</p>
-                <button onClick={() => this.props.handleLike(this.props.image.id)}>I WANT TO EAT THAT</button>
-                {this.props.deleteMode && <button onClick={() => this.props.deleteImage(this.props.image.id)}>Delete</button>}
-            </>
+            <Grid item xs={6} md={4}  >
+                <Paper>
+                    {this.state.showImage 
+                    ? 
+                    <img onClick={this.toggleState} src={this.props.image.path} alt={this.props.image.description}/> 
+                    :  
+                    <>  
+                        <div class="seethroughparent">               
+                            <img onClick={this.toggleState} class="seethrough" src={this.props.image.path} alt={this.props.image.description}/> 
+                            <p class="ontop" onClick={this.toggleState} >{this.props.image.description}</p>
+                        </div>
+                    </>}      
+                    <p>{this.props.image.likes ? `This photo has ${this.props.image.likes} likes.` : "Be the first to like this!"}</p>
+                    <Button variant="contained" onClick={() => this.props.handleLike(this.props.image.id)}>YUM</Button>
+                    {this.props.deleteMode && <Button variant="contained" color="secondary" onClick={() => this.props.deleteImage(this.props.image.id)}>Delete</Button>}
+                </Paper>
+            </Grid>
         );
     };
 };

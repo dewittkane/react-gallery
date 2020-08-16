@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import GalleryItem from '../GalleryItem/GalleryItem.js'
+import './GalleryList.css'
+import { makeStyles } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core";
+
 
 class GalleryList extends Component {
+
+
     render() {
         return(
-            <>
-                <div>
+            
+                <Grid container spacing={3} justifyContent="space-between" alignItems='baseline'>
                     {this.props.gallery.map(image => (
                         <GalleryItem 
                             key={image.id} 
@@ -15,8 +21,8 @@ class GalleryList extends Component {
                             deleteImage={this.props.deleteImage}
                         />
                     ))}
-                </div>
-            </>
+                </Grid>
+            
         );
     };
 };

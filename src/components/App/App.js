@@ -4,6 +4,7 @@ import GalleryList from '../GalleryList/GalleryList.js'
 import GalleryForm from '../GalleryForm/GalleryForm.js'
 import Axios from 'axios';
 import DeleteModeButton from '../DeleteModeButton/DeleteModeButton';
+import 'fontsource-roboto';
 
 
 class App extends Component {
@@ -89,13 +90,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Gallery of my life</h1>
+          <h1 className="App-title">YUMBOOK</h1>
+          <h3>A collection of food from around the world!</h3>
         </header>
-        <GalleryForm 
-          newImage={this.state.newImage} 
-          handleChangeFor={this.handleChangeFor} 
-          submitImage={this.submitImage}
-        />
         <br/>
         <GalleryList 
           deleteImage={this.deleteImage} 
@@ -103,7 +100,18 @@ class App extends Component {
           handleLike={this.handleLike} 
           gallery={this.state.gallery}
         />
-        <DeleteModeButton toggleDeleteMode={this.toggleDeleteMode} />
+        <div>
+
+          <h3>Keep this yum train rollin'! Add your own pics below.</h3>
+          <GalleryForm 
+            newImage={this.state.newImage} 
+            handleChangeFor={this.handleChangeFor} 
+            submitImage={this.submitImage}
+          />
+          <br></br>
+          <DeleteModeButton toggleDeleteMode={this.toggleDeleteMode} />
+
+        </div>
       </div>
     );
   }
