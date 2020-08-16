@@ -8,12 +8,19 @@ import Axios from 'axios';
 class App extends Component {
 
   state = {
+    deleteMode: false,
     newImage: {
       url: '',
       description: ''
     },
     gallery: []
   }//declares state, our friendly, local variable storage!
+
+  toggleDeleteMode = () => {
+    this.setState({
+      deleteMode: !this.state.deleteMode
+    })
+  }
 
   componentDidMount() {
     this.getGallery();
