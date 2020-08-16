@@ -6,7 +6,14 @@ CREATE TABLE gallery (
 );
 
 INSERT INTO gallery (path, description) VALUES
-    ('images/goat_small.jpg', 'Photo of a goat taken at Glacier National Park.'),
-    ('images/goat_small.jpg', 'Photo of a goat taken at Glacier National Park.'),
-    ('images/goat_small.jpg', 'Photo of a goat taken at Glacier National Park.'),
-    ('images/goat_small.jpg', 'Photo of a goat taken at Glacier National Park.');
+    ('/images/steak.jpeg', '56oz Ribeye from a steakhouse in Indianapolis, Indiana, USA'),
+    ('/images/banana.jpeg', 'Fried Banana from street vendor in Penang, Malaysia'),
+    ('/images/cafeitaly.jpeg', 'Cafe Correto (or Corrected Coffee), espresso with liqueur from cafe in Montepulciano, Italy'),
+    ('/images/cheese.JPG', 'Cheese shop in Paris, France'),
+    ('/images/currymee.jpeg', 'Curry Mee and Kopi at a kopitiam in Kuala Lumpur, Malaysia'),
+    ('/images/fishandchips.JPG', 'Fish and Chips from a chip shop in London, England'),
+    ('/images/nasilemak.jpeg', 'National Dish: Nasi Lemak from a kopitiam in Langkwai, Malaysia'),
+    ('/images/noodles.jpeg', 'Wonton Mee Goreng from a noodle shop in Kuala Lumpur, Malaysia'),
+    ('/images/nutmeg.jpeg', 'Fresh Nutmeg at a drink stall in Penang, Malaysia'),
+    ('/images/pastry.jpeg', 'French Pastries at a patisserie in Tokyo, Japan'),
+    ('/images/ramen.jpeg', 'Late night ramen at a ramen shop in Tokyo, Japan');

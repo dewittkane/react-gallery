@@ -29,6 +29,18 @@ router.put('/', (req, res) => {
         })
 }); // END PUT Route
 
+router.delete('/:id', (req, res) => {
+    const galleryId = req.params.id;
+    const sqlQuery = `DELETE FROM gallery WHERE id=$1;`;
+    pool.query(sqlQuery, [galleryId])
+        .then(result => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log(`Error making database query ${sqlQuery}`, error);
+            res.sendStatus(500);
+        })
+})
+
 // GET Route
 router.get('/', (req, res) => {
 
