@@ -28,8 +28,15 @@ class App extends Component {
           console.log(error);
         })} else {
           alert('Please input both a valid url and a description!')
+          return;
         } 
     
+    this.setState({
+      newImage: {
+        url: '',
+        description: ''
+      }
+    })
   };
 
   handleChangeFor = (propertyName) => (event) => {
@@ -68,7 +75,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Gallery of my life</h1>
         </header>
-        <GalleryForm handleChangeFor={this.handleChangeFor} submitImage={this.submitImage}/>
+        <GalleryForm newImage={this.state.newImage} handleChangeFor={this.handleChangeFor} submitImage={this.submitImage}/>
         <br/>
         <GalleryList handleLike={this.handleLike} gallery={this.state.gallery}/>
       </div>
